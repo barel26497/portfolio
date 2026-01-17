@@ -85,7 +85,7 @@ export default function Hero() {
               GitHub
             </a>
             <a
-              href="/resources/BarelHajbiResume2025_V9.pdf"
+              href={`${base}resources/BarelHajbiResume2025_V9.pdf`}
               target="_blank"
               rel="noopener noreferrer"
               className="hero__btn hero__btn--outline"
