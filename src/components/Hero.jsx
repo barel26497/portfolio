@@ -2,6 +2,8 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import './Hero.css'
 
+const base = import.meta.env.BASE_URL;
+
 export default function Hero() {
   const [imgError, setImgError] = useState(false)
 
