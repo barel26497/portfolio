@@ -17,7 +17,7 @@ export default function Hero() {
           >
             {!imgError ? (
               <img
-                src="/Images/0Z8A7938.png"
+                src={`${base}Images/0Z8A7938.png`}
                 alt="Barel Hajbi"
                 className="hero__photo"
                 onError={() => setImgError(true)}
