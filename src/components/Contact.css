@@ -1,0 +1,44 @@
+.contact {
+  padding: 6rem 2rem 4rem;
+}
+
+.contact__container {
+  max-width: 600px;
+  text-align: center;
+}
+
+.contact__text {
+  font-size: 1.1rem;
+  color: #a1a1aa;
+  margin-bottom: 2rem;
+}
+
+.contact__links {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contact__link {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #00d4aa;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border: 2px solid rgba(0, 212, 170, 0.4);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+
+.contact__link:hover {
+  background: rgba(0, 212, 170, 0.1);
+  border-color: #00d4aa;
+  transform: translateY(-2px);
+}
+
+.contact__footer {
+  margin-top: 4rem;
+  font-size: 0.9rem;
+  color: #71717a;
+}
