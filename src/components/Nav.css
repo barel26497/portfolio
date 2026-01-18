@@ -20,7 +20,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  position: relative;
+  position: relative; /* anchors mobile dropdown */
 }
 
 .nav__logo {
@@ -32,9 +32,15 @@
   letter-spacing: -0.02em;
 }
 
+.nav__links,
+.nav__mobile {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .nav__links {
   display: flex;
-  list-style: none;
   gap: 2rem;
 }
 
@@ -46,36 +52,38 @@
   transition: color 0.2s ease;
 }
 
-@media (max-width: 768px) {
-  .nav__links {
-    gap: 1rem;
-  }
-  .nav__link {
-    font-size: 0.85rem;
-  }
-
-  /* Mobile toggle button (hamburger) */
+/* Hamburger (hidden on desktop) */
 .nav__toggle {
   display: none;
+  width: 42px;
+  height: 42px;
   border: 0;
   background: transparent;
-  padding: 0.25rem;
+  padding: 0;
   cursor: pointer;
+  border-radius: 12px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav__toggle:focus-visible {
+  outline: 2px solid rgba(0, 212, 170, 0.5);
+  outline-offset: 3px;
 }
 
 .nav__toggleBar {
   display: block;
-  width: 26px;
+  width: 24px;
   height: 2px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.75);
+  background: rgba(255, 255, 255, 0.8);
+  margin: 0 auto;
 }
 
 .nav__toggleBar + .nav__toggleBar {
-  margin-top: 7px;
+  margin-top: 6px;
 }
 
-/* Mobile dropdown (hidden by default; shown when rendered) */
+/* Mobile dropdown base (hidden unless rendered) */
 .nav__mobile {
   display: none;
 }
@@ -90,21 +98,24 @@
   text-align: center;
 }
 
-/* Mobile-only layout changes */
 @media (max-width: 768px) {
-  /* Hide the dense desktop links on mobile */
+  .nav {
+    padding: 1rem 1.25rem;
+  }
+
+  /* Hide desktop links to avoid dense/cut text */
   .nav__links {
     display: none;
   }
 
-  /* Show hamburger on mobile */
+  /* Show hamburger */
   .nav__toggle {
     display: inline-flex;
     align-items: center;
     justify-content: center;
   }
 
-  /* The dropdown panel */
+  /* Dropdown panel */
   .nav__mobile {
     display: flex;
     position: absolute;
@@ -112,14 +123,12 @@
     left: 1rem;
     right: 1rem;
     flex-direction: column;
-    list-style: none;
     padding: 0.75rem 1rem;
     border-radius: 16px;
     background: rgba(10, 10, 15, 0.92);
     backdrop-filter: blur(14px);
     box-shadow: 0 18px 50px rgba(0, 0, 0, 0.35);
     border: 1px solid rgba(255, 255, 255, 0.08);
+    z-index: 50;
   }
-}
-
 }
