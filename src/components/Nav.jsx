@@ -44,6 +44,8 @@ export default function Nav({ scrolled }) {
         >
           <span className="nav__toggleBar" />
           <span className="nav__toggleBar" />
+          <span className="nav__toggleBar" />
+
         </button>
 
         <ul className="nav__links">
