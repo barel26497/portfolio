@@ -42,9 +42,7 @@ export default function Nav({ scrolled }) {
           aria-controls="primary-navigation"
           onClick={() => setMenuOpen((v) => !v)}
         >
-          <span className="nav__toggleBar" />
-          <span className="nav__toggleBar" />
-          <span className="nav__toggleBar" />
+          <span className="nav__toggleIcon" aria-hidden="true" />
 
         </button>
 
