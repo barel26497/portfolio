@@ -10,6 +10,15 @@ const navLinks = [
 ]
 
 export default function Nav({ scrolled }) {
+  const [menuOpen, setMenuOpen] = useState(false)
+  useEffect(() => {
+    const onResize = () => {
+      if (window.innerWidth > 768) setMenuOpen(false)
+    }
+    window.addEventListener('resize', onResize)
+    return () => window.removeEventListener('resize', onResize)
+  }, [])
+  
   return (
     <motion.header
       className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
