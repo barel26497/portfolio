@@ -15,7 +15,7 @@ const projects = [
     link: 'https://github.com/barel26497/Order-Processing-Application',
   },
   {
-    title: 'MeetingMind',
+    title: 'MeetingMind - In progress',
     desc: 'Backend-first AI system for extracting action items, decisions, and open questions from meeting transcripts using a local LLM. Designed to be ethical, explainable, and production-oriented. Currently in active development.',
     tech: ['Python','FastAPI','PostgreSQL','SQLAlchemy','Alembic','Docker','Ollama (Local LLM)','REST API'],
     link: null,
