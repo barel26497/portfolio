@@ -6,7 +6,7 @@ const projects = [
     title: 'Secure File-Sharing System',
     desc: 'Local-network shared folder system with SSL-encrypted sync, real-time monitoring via Watchdog, and a Tkinter GUI. Built with Python, multithreading, and TCP communication.',
     tech: ['Python', 'Tkinter', 'SSL', 'Watchdog', 'Multithreading'],
-    link: null,
+    link: 'https://github.com/barel26497/DropBoxProject',
   },
   {
     title: 'Order-Processing-Application',
