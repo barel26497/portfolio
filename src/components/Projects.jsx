@@ -11,7 +11,7 @@ const projects = [
   {
     title: 'Order-Processing-Application',
     desc: 'Full-stack order processing application. Built with JavaScript and modern web technologies.',
-    tech: ['Python','React', 'JavaScript', 'RabbitMQ', 'REST API', 'MongoDB'],
+    tech: ['Python','React', 'JavaScript', 'Docker', 'RabbitMQ', 'REST API', 'MongoDB'],
     link: 'https://github.com/barel26497/Order-Processing-Application',
   },
   {
