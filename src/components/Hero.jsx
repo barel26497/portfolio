@@ -54,7 +54,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.5 }}
           >
-            Junior Full Stack Developer
+            Full Stack Developer
           </motion.p>
           <motion.p
             className="hero__desc"
@@ -62,7 +62,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.45, duration: 0.5 }}
           >
-            Computer Science graduate with a passion for building secure, scalable applications.
+            Computer Science graduate and Full Stack Developer focused on building reliable backend systems and modern web applications. Passionate about system design, scalable architectures, and AI-driven solutions. Committed to clean code, thoughtful engineering, and continuous growth in production-grade software development.
           </motion.p>
           <motion.div
             className="hero__actions"
