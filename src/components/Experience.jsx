@@ -3,16 +3,6 @@ import './Experience.css'
 
 const experiences = [
   {
-    role: 'Full Stack Developer',
-    company: 'Final Project – The Open University of Israel',
-    location: 'Ramat Gan, Israel',
-    period: 'July 2024 - October 2024',
-    points: [
-      'Developed a local-network shared folder system with secure file synchronization, dynamic GUI, and real-time updates using Python, Tkinter, and SSL.',
-      'Python: Backend logic and secure TCP communication. Tkinter: GUI. SSL: Encrypted client-server communication. Watchdog: Real-time file monitoring. Multithreading: Efficient handling of multiple client connections.',
-    ],
-  },
-  {
     role: 'RF Engineer',
     company: 'Beeper',
     location: 'Ramat Gan, Israel',
