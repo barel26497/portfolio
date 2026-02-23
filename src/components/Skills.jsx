@@ -2,7 +2,7 @@ import { motion } from 'framer-motion'
 import './Skills.css'
 
 const frontend = ['React', 'Vite', 'HTML', 'CSS', 'JavaScript']
-const backend = ['Node.js', 'Python', 'Java', 'C', 'C++', 'SQL', 'PostgreSQL', 'MongoDB', 'RabbitMQ', 'Redis', 'Docker', 'Kubernetes', 'REST API Design']
+const backend = ['Node.js','Python','Java','C','SQL','PostgreSQL','MongoDB','RabbitMQ','Redis','Docker','Kubernetes','REST API Design','FastAPI','Authentication & Authorization (RBAC)','Token-Based Authentication','Database Schema Design','Alembic','Workflow Automation (n8n)','LLM Integration']
 
 export default function Skills() {
   return (
