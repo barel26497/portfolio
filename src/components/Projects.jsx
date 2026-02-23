@@ -25,7 +25,13 @@ const projects = [
     desc: 'Low-code expense management and approval system built with n8n and PostgreSQL. Implements token-based authentication and role-based access control (Admin / Supervisor / Employee) with dynamic dashboards and workflow automation.',
     tech: ['n8n','PostgreSQL','SQL','Docker','Docker Compose','Token-Based Authentication','RBAC','HTML','CSS','Workflow Automation','REST Webhooks'],
     link: 'https://github.com/barel26497/ExpenseFlow',
-  }
+  },
+  {
+  title: 'PromptPilot (In Progress)',
+  desc: 'AI-powered Chrome extension currently in active development. Enhances and refines user prompts directly in the browser using a locally hosted LLM via FastAPI. Designed for fast, privacy-focused prompt optimization with a lightweight Docker-based backend architecture.',
+  tech: ['JavaScript','Chrome Extension API','Python','FastAPI','Ollama (Local LLM)','Docker','REST API','Prompt Engineering'],
+  link: null,
+}
 ]
 
 export default function Projects() {
