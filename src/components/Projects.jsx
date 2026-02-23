@@ -15,10 +15,16 @@ const projects = [
     link: 'https://github.com/barel26497/Order-Processing-Application',
   },
   {
-    title: 'MeetingMind - In progress',
-    desc: 'Backend-first AI system for extracting action items, decisions, and open questions from meeting transcripts using a local LLM. Designed to be ethical, explainable, and production-oriented. Currently in active development.',
-    tech: ['Python','FastAPI','PostgreSQL','SQLAlchemy','Alembic','Docker','Ollama (Local LLM)','REST API'],
-    link: null,
+    title: 'MeetingMind',
+    desc: 'AI-powered meeting transcript analyzer that processes raw meeting text and extracts structured insights such as action items, decisions, and open questions using a locally hosted LLM. Designed for reliability, deterministic outputs, and production-ready backend architecture.',
+    tech: ['Python','FastAPI','PostgreSQL','Alembic','Pydantic','React','Vite','Docker','Docker Compose','Ollama (Local LLM)','JSON Schema Validation','REST API'],
+    link: 'https://github.com/barel26497/MeetingMind',
+  },
+  {
+    title: 'ExpenseFlow',
+    desc: 'Low-code expense management and approval system built with n8n and PostgreSQL. Implements token-based authentication and role-based access control (Admin / Supervisor / Employee) with dynamic dashboards and workflow automation.',
+    tech: ['n8n','PostgreSQL','SQL','Docker','Docker Compose','Token-Based Authentication','RBAC','HTML','CSS','Workflow Automation','REST Webhooks'],
+    link: 'https://github.com/barel26497/ExpenseFlow',
   }
 ]
 
