@@ -69,9 +69,13 @@ export default function Experience() {
                 <p className="experience__company">{exp.company}</p>
                 <p className="experience__location">{exp.location}</p>
                 <ul className="experience__points">
-                  {exp.points.map((point, j) => (
-                    <li key={j}>{point}</li>
-                  ))}
+                  {exp.points && (
+  <ul className="experience__points">
+    {exp.points.map((point, j) => (
+      <li key={j}>{point}</li>
+    ))}
+  </ul>
+)}
                 </ul>
               </div>
             </motion.div>
