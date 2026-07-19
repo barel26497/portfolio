@@ -3,6 +3,12 @@ import './Experience.css'
 
 const experiences = [
   {
+    role: 'Software Developer',
+    company: 'Konimbo',
+    location: 'Kadima Zoran, Israel',
+    period: 'July 2026 - Current',
+  },
+  {
     role: 'RF Engineer',
     company: 'Beeper',
     location: 'Ramat Gan, Israel',
