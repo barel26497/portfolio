@@ -1,41 +1,41 @@
-import { motion } from 'framer-motion'
-import './Experience.css'
+import { motion } from "framer-motion";
+import "./Experience.css";
 
 const experiences = [
   {
-    role: 'Software Developer',
-    company: 'Konimbo',
-    location: 'Kadima Zoran, Israel',
-    period: 'July 2026 - Current',
+    role: "Software Developer",
+    company: "Konimbo",
+    location: "Kadima Zoran, Israel",
+    period: "July 2026 - Current",
   },
   {
-    role: 'RF Engineer',
-    company: 'Beeper',
-    location: 'Ramat Gan, Israel',
-    period: 'May 2019 - December 2022',
+    role: "RF Engineer",
+    company: "Beeper",
+    location: "Ramat Gan, Israel",
+    period: "May 2019 - December 2022",
     points: [
-      'Troubleshot and maintained complex technical systems in the field. Worked cross-functionally to resolve issues and support system reliability.',
+      "Troubleshot and maintained complex technical systems in the field. Worked cross-functionally to resolve issues and support system reliability.",
     ],
   },
   {
     role: "C4I's Systems Operators Commander",
-    company: 'IDF',
-    location: 'Jerusalem, Israel',
-    period: 'February 2016 - May 2019',
+    company: "IDF",
+    location: "Jerusalem, Israel",
+    period: "February 2016 - May 2019",
     points: [
-      'Led C4I operations and managed critical military communication systems. Oversaw advanced tech platforms (Elbit DAP, Motorola, WiMAX) supporting field missions.',
+      "Led C4I operations and managed critical military communication systems. Oversaw advanced tech platforms (Elbit DAP, Motorola, WiMAX) supporting field missions.",
     ],
   },
   {
-    role: 'Online Marketing Manager',
-    company: 'Optinize',
-    location: 'Tel Aviv, Israel',
-    period: 'January 2015 - February 2016',
+    role: "Online Marketing Manager",
+    company: "Optinize",
+    location: "Tel Aviv, Israel",
+    period: "January 2015 - February 2016",
     points: [
-      'Built and customized marketing content using HTML and CSS. Collaborated with international clients to support tech-driven campaigns.',
+      "Built and customized marketing content using HTML and CSS. Collaborated with international clients to support tech-driven campaigns.",
     ],
   },
-]
+];
 
 export default function Experience() {
   return (
@@ -45,7 +45,7 @@ export default function Experience() {
           className="section__title"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: '-80px' }}
+          viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.6 }}
         >
           Experience
@@ -57,7 +57,7 @@ export default function Experience() {
               className="experience__item"
               initial={{ opacity: 0, x: -30 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: '-40px' }}
+              viewport={{ once: true, margin: "-40px" }}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
               <div className="experience__dot" />
@@ -70,12 +70,12 @@ export default function Experience() {
                 <p className="experience__location">{exp.location}</p>
                 <ul className="experience__points">
                   {exp.points && (
-  <ul className="experience__points">
-    {exp.points.map((point, j) => (
-      <li key={j}>{point}</li>
-    ))}
-  </ul>
-)}
+                    <ul className="experience__points">
+                      {exp.points.map((point, j) => (
+                        <li key={j}>{point}</li>
+                      ))}
+                    </ul>
+                  )}
                 </ul>
               </div>
             </motion.div>
@@ -83,5 +83,5 @@ export default function Experience() {
         </div>
       </div>
     </section>
-  )
+  );
 }
