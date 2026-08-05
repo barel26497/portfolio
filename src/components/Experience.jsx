@@ -14,7 +14,7 @@ const experiences = [
     company: "Beeper",
     location: "Ramat Gan, Israel",
     period: "May 2019 - December 2022",
-    thumbnail: `${import.meta.env.BASE_URL}Images/beeper-logo.jpg`,
+    thumbnail: `${import.meta.env.BASE_URL}Images/beeper-logo.png`,
     points: [
       "Troubleshot and maintained complex technical systems in the field. Worked cross-functionally to resolve issues and support system reliability.",
     ],
