@@ -4,7 +4,7 @@ import "./Experience.css";
 const experiences = [
   {
     role: "Software Developer",
-    company: "Konimbo",
+    company: "Youleap",
     location: "Kadima Zoran, Israel",
     period: "July 2026 - Current",
   },
