@@ -68,7 +68,7 @@
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 14px;
-  background: rgba(255, 255, 255, 0.05);
+  background: #FFFFFF;
 }
 
 .experience__thumbnail {
@@ -76,7 +76,7 @@
   height: 100%;
   display: block;
   object-fit: contain;
-  padding: 10px;
+  padding: 0px;
   box-sizing: border-box;
 }
 
