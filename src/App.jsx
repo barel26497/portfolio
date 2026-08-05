@@ -10,7 +10,6 @@ import SectionBackground from './components/SectionBackground'
 import CursorGlow from './components/CursorGlow'
 import './App.css'
 
-
 function App() {
   const [scrolled, setScrolled] = useState(false)
 
