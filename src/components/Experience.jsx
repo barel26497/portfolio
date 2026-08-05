@@ -14,7 +14,7 @@ const experiences = [
     company: "Beeper",
     location: "Ramat Gan, Israel",
     period: "May 2019 - December 2022",
-    thumbnail: "/Images/beeper-logo.jpeg",
+    thumbnail: `${import.meta.env.BASE_URL}Images/beeper-logo.jpg`
     points: [
       "Troubleshot and maintained complex technical systems in the field. Worked cross-functionally to resolve issues and support system reliability.",
     ],
@@ -24,7 +24,7 @@ const experiences = [
     company: "IDF",
     location: "Jerusalem, Israel",
     period: "February 2016 - May 2019",
-    thumbnail: "/Images/idf-logo.png",
+    thumbnail: `${import.meta.env.BASE_URL}Images/idf-logo.png`
     points: [
       "Led C4I operations and managed critical military communication systems. Oversaw advanced tech platforms including Elbit DAP, Motorola, and WiMAX, supporting field missions.",
     ],
@@ -34,7 +34,7 @@ const experiences = [
     company: "Optinize",
     location: "Tel Aviv, Israel",
     period: "January 2015 - February 2016",
-    thumbnail: "/Images/optinize-logo.png",
+    thumbnail: `${import.meta.env.BASE_URL}Images/optinize-logo.png`
     points: [
       "Built and customized marketing content using HTML and CSS. Collaborated with international clients to support tech-driven campaigns.",
     ],
