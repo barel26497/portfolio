@@ -26,12 +26,12 @@ const projects = [
     tech: ['n8n','PostgreSQL','SQL','Docker','Docker Compose','Token-Based Authentication','RBAC','HTML','CSS','Workflow Automation','REST Webhooks'],
     link: 'https://github.com/barel26497/ExpenseFlow',
   },
-  {
-  title: 'PromptPilot (In Progress)',
-  desc: 'AI-powered Chrome extension currently in active development. Enhances and refines user prompts directly in the browser using a locally hosted LLM via FastAPI. Designed for fast, privacy-focused prompt optimization with a lightweight Docker-based backend architecture.',
-  tech: ['JavaScript','Chrome Extension API','Python','FastAPI','Ollama (Local LLM)','Docker','REST API','Prompt Engineering'],
-  link: null,
-}
+//   {
+//   title: 'PromptPilot (In Progress)',
+//   desc: 'AI-powered Chrome extension currently in active development. Enhances and refines user prompts directly in the browser using a locally hosted LLM via FastAPI. Designed for fast, privacy-focused prompt optimization with a lightweight Docker-based backend architecture.',
+//   tech: ['JavaScript','Chrome Extension API','Python','FastAPI','Ollama (Local LLM)','Docker','REST API','Prompt Engineering'],
+//   link: null,
+// }
 ]
 
 export default function Projects() {
