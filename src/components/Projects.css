@@ -4,6 +4,7 @@
   overflow: hidden;
 }
 
+
 .projects::before {
   content: '';
   position: absolute;
