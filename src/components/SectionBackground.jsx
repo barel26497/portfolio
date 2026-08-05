@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import './SectionBackground.css'
 
-const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact']
+const sectionIds = ['about', 'experience', 'education', 'projects', 'skills', 'contact']
 
 export default function SectionBackground() {
   const [activeSection, setActiveSection] = useState('hero')
@@ -178,6 +178,48 @@ export default function SectionBackground() {
           }
           transition={{
             duration: 26,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </div>
+
+      <div className={getSceneClassName('education')}>
+        <div className="section-background__education-grid" />
+        <div className="section-background__education-ring section-background__education-ring--one" />
+        <div className="section-background__education-ring section-background__education-ring--two" />
+
+        <motion.div
+          className="section-background__orb section-background__orb--education-primary"
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  x: [0, -20, 12, 0],
+                  y: [0, 16, -10, 0],
+                  scale: [1, 1.05, 0.98, 1],
+                }
+          }
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        <motion.div
+          className="section-background__orb section-background__orb--education-secondary"
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  x: [0, 18, -8, 0],
+                  y: [0, -14, 10, 0],
+                  scale: [1, 0.97, 1.03, 1],
+                }
+          }
+          transition={{
+            duration: 29,
             repeat: Infinity,
             ease: 'easeInOut',
           }}

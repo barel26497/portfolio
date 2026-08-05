@@ -209,6 +209,96 @@
   background: rgba(99, 102, 241, 0.1);
 }
 
+/* Education */
+
+.section-background__scene--education {
+  background:
+    radial-gradient(
+      ellipse at 72% 30%,
+      rgba(99, 102, 241, 0.12),
+      transparent 44%
+    ),
+    radial-gradient(
+      ellipse at 20% 76%,
+      rgba(59, 130, 246, 0.06),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      #090a10 0%,
+      #0b0b18 50%,
+      #090a10 100%
+    );
+}
+
+.section-background__education-grid {
+  position: absolute;
+  inset: 0;
+  opacity: 0.16;
+  background-image:
+    linear-gradient(
+      rgba(129, 140, 248, 0.07) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      90deg,
+      rgba(129, 140, 248, 0.07) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      rgba(0, 0, 0, 0.72) 45%,
+      transparent 84%
+    );
+  -webkit-mask-image:
+    radial-gradient(
+      ellipse at center,
+      black 0%,
+      rgba(0, 0, 0, 0.72) 45%,
+      transparent 84%
+    );
+}
+
+.section-background__education-ring {
+  position: absolute;
+  border: 1px solid rgba(129, 140, 248, 0.12);
+  border-radius: 50%;
+}
+
+.section-background__education-ring--one {
+  top: 14%;
+  right: 9%;
+  width: 390px;
+  height: 390px;
+}
+
+.section-background__education-ring--two {
+  right: 23%;
+  bottom: 8%;
+  width: 220px;
+  height: 220px;
+  border-color: rgba(96, 165, 250, 0.1);
+}
+
+.section-background__orb--education-primary {
+  top: 8%;
+  right: -130px;
+  width: 520px;
+  height: 520px;
+  background: rgba(99, 102, 241, 0.12);
+}
+
+.section-background__orb--education-secondary {
+  bottom: -170px;
+  left: -120px;
+  width: 470px;
+  height: 470px;
+  background: rgba(59, 130, 246, 0.075);
+}
+
 /* Projects */
 
 .section-background__scene--projects {
@@ -520,6 +610,7 @@
     right: 8%;
   }
 
+  .section-background__education-grid,
   .section-background__projects-grid,
   .section-background__skills-grid {
     background-size: 48px 48px;

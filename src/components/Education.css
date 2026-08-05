@@ -1,0 +1,127 @@
+.education {
+  padding: 6rem 2rem;
+}
+
+.education__container {
+  max-width: 900px;
+}
+
+.education__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.75rem;
+  background: rgba(24, 24, 27, 0.5);
+  border: 1px solid rgba(63, 63, 70, 0.4);
+  border-radius: 14px;
+  transition:
+    border-color 0.3s ease,
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.education__card:hover {
+  border-color: rgba(99, 102, 241, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.education__icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 70px;
+  height: 70px;
+  color: #a5b4fc;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.25);
+  border-radius: 14px;
+}
+
+.education__icon svg {
+  width: 36px;
+  height: 36px;
+}
+
+.education__content {
+  flex: 1;
+  min-width: 0;
+}
+
+.education__header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.5rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.education__degree {
+  margin: 0 0 0.35rem;
+  color: #ffffff;
+  font-family: "Syne", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.education__institution {
+  margin: 0;
+  color: #a5b4fc;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.education__period {
+  flex-shrink: 0;
+  color: #a5b4fc;
+  font-size: 0.85rem;
+}
+
+.education__description {
+  max-width: 700px;
+  margin: 0;
+  color: #d4d4d8;
+  font-size: 0.95rem;
+  line-height: 1.65;
+}
+
+@media (max-width: 600px) {
+  .education {
+    padding: 4rem 1rem;
+  }
+
+  .education__card {
+    gap: 1rem;
+    padding: 1.25rem;
+  }
+
+  .education__icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+  }
+
+  .education__icon svg {
+    width: 30px;
+    height: 30px;
+  }
+
+  .education__header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .education__card {
+    flex-direction: column;
+  }
+
+  .education__icon {
+    width: 64px;
+    height: 64px;
+  }
+}
