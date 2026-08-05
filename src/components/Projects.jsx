@@ -1,8 +1,5 @@
-import { useRef, useState } from 'react'
-import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-motion'
-import MagneticLink from './MagneticLink'
+import { motion } from 'framer-motion'
 import './Projects.css'
-
 
 const projects = [
   {
@@ -69,8 +66,6 @@ const projects = [
 ]
 
 export default function Projects() {
-  const [activeProject, setActiveProject] = useState(null)
-
   return (
     <section className="projects" id="projects">
       <div className="section__container projects__container">
@@ -90,186 +85,117 @@ export default function Projects() {
           </p>
         </motion.div>
 
-        <div
-          className={`projects__grid ${
-            activeProject !== null ? 'projects__grid--focused' : ''
-          }`}
-        >
+        <div className="projects__grid">
           {projects.map((project, index) => (
-            <ProjectCard
+            <motion.article
               key={project.title}
-              project={project}
-              index={index}
-              isActive={activeProject === index}
-              isDimmed={activeProject !== null && activeProject !== index}
-              onActivate={() => setActiveProject(index)}
-              onDeactivate={() => setActiveProject(null)}
-            />
+              className="project-card"
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-40px' }}
+              transition={{
+                duration: 0.55,
+                delay: index * 0.08,
+              }}
+              whileHover={{ y: -8 }}
+            >
+              <div className="project-card__glow" />
+
+              <a
+                href={project.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="project-card__image-link"
+                aria-label={`View ${project.title} on GitHub`}
+              >
+                <div className="project-card__image-wrapper">
+                  <img
+                    src={project.image}
+                    alt={`${project.title} project preview`}
+                    className="project-card__image"
+                    loading="lazy"
+                  />
+
+                  <div className="project-card__image-overlay" />
+
+                  <span className="project-card__type">
+                    {project.type}
+                  </span>
+
+                  {project.featured && (
+                    <span className="project-card__featured">
+                      Featured
+                    </span>
+                  )}
+
+                  <span className="project-card__image-action">
+                    View project
+                    <span aria-hidden="true">↗</span>
+                  </span>
+                </div>
+              </a>
+
+              <div className="project-card__content">
+                <h3 className="project-card__title">
+                  {project.title}
+                </h3>
+
+                <p className="project-card__desc">
+                  {project.desc}
+                </p>
+
+                <div className="project-card__highlights">
+                  {project.highlights.map((highlight) => (
+                    <span
+                      key={highlight}
+                      className="project-card__highlight"
+                    >
+                      <span
+                        className="project-card__check"
+                        aria-hidden="true"
+                      >
+                        ✓
+                      </span>
+
+                      {highlight}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-card__tech">
+                  {project.tech.map((technology) => (
+                    <span
+                      key={technology}
+                      className="project-card__tag"
+                    >
+                      {technology}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="project-card__footer">
+                  <a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-card__link"
+                  >
+                    <GitHubIcon />
+                    GitHub
+                    <span
+                      className="project-card__arrow"
+                      aria-hidden="true"
+                    >
+                      ↗
+                    </span>
+                  </a>
+                </div>
+              </div>
+            </motion.article>
           ))}
         </div>
       </div>
     </section>
-  )
-}
-
-function ProjectCard({
-  project,
-  index,
-  isActive,
-  isDimmed,
-  onActivate,
-  onDeactivate,
-}) {
-  const cardRef = useRef(null)
-  const reduceMotion = useReducedMotion()
-  const rotateX = useMotionValue(0)
-  const rotateY = useMotionValue(0)
-  const springRotateX = useSpring(rotateX, {
-    stiffness: 220,
-    damping: 24,
-    mass: 0.45,
-  })
-  const springRotateY = useSpring(rotateY, {
-    stiffness: 220,
-    damping: 24,
-    mass: 0.45,
-  })
-
-  const handlePointerMove = (event) => {
-    if (!cardRef.current || event.pointerType === 'touch') {
-      return
-    }
-
-    const rect = cardRef.current.getBoundingClientRect()
-    const pointerX = event.clientX - rect.left
-    const pointerY = event.clientY - rect.top
-    const percentageX = pointerX / rect.width
-    const percentageY = pointerY / rect.height
-
-    cardRef.current.style.setProperty('--spotlight-x', `${pointerX}px`)
-    cardRef.current.style.setProperty('--spotlight-y', `${pointerY}px`)
-
-    if (!reduceMotion) {
-      rotateY.set((percentageX - 0.5) * 3.5)
-      rotateX.set((0.5 - percentageY) * 3)
-    }
-  }
-
-  const resetCard = () => {
-    rotateX.set(0)
-    rotateY.set(0)
-    onDeactivate()
-  }
-
-  return (
-    <motion.article
-      ref={cardRef}
-      className={`project-card ${isActive ? 'project-card--active' : ''} ${
-        isDimmed ? 'project-card--dimmed' : ''
-      }`}
-      initial={{ opacity: 0, y: 35 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: '-40px' }}
-      transition={{
-        duration: 0.55,
-        delay: index * 0.08,
-      }}
-      style={
-        reduceMotion
-          ? undefined
-          : {
-              rotateX: springRotateX,
-              rotateY: springRotateY,
-              transformPerspective: 1100,
-            }
-      }
-      onPointerEnter={onActivate}
-      onPointerMove={handlePointerMove}
-      onPointerLeave={resetCard}
-      onFocusCapture={onActivate}
-      onBlurCapture={(event) => {
-        if (!event.currentTarget.contains(event.relatedTarget)) {
-          resetCard()
-        }
-      }}
-    >
-      <div className="project-card__spotlight" />
-      <div className="project-card__border-glow" />
-      <div className="project-card__glow" />
-
-      <MagneticLink
-        href={project.link}
-        target="_blank"
-        rel="noopener noreferrer"
-        className="project-card__image-link"
-        strength={0.025}
-        aria-label={`View ${project.title} on GitHub`}
-      >
-        <div className="project-card__image-wrapper">
-          <img
-            src={project.image}
-            alt={`${project.title} project preview`}
-            className="project-card__image"
-            loading="lazy"
-          />
-
-          <div className="project-card__image-overlay" />
-          <div className="project-card__image-sheen" />
-
-          <span className="project-card__type">{project.type}</span>
-
-          {project.featured && (
-            <span className="project-card__featured">Featured</span>
-          )}
-
-          <span className="project-card__image-action">
-            View project
-            <span aria-hidden="true">↗</span>
-          </span>
-        </div>
-      </MagneticLink>
-
-      <div className="project-card__content">
-        <h3 className="project-card__title">{project.title}</h3>
-
-        <p className="project-card__desc">{project.desc}</p>
-
-        <div className="project-card__highlights">
-          {project.highlights.map((highlight) => (
-            <span key={highlight} className="project-card__highlight">
-              <span className="project-card__check" aria-hidden="true">
-                ✓
-              </span>
-
-              {highlight}
-            </span>
-          ))}
-        </div>
-
-        <div className="project-card__tech">
-          {project.tech.map((technology) => (
-            <span key={technology} className="project-card__tag">
-              {technology}
-            </span>
-          ))}
-        </div>
-
-        <div className="project-card__footer">
-          <MagneticLink
-            href={project.link}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="project-card__link"
-          >
-            <GitHubIcon />
-            GitHub
-            <span className="project-card__arrow" aria-hidden="true">
-              ↗
-            </span>
-          </MagneticLink>
-        </div>
-      </div>
-    </motion.article>
   )
 }
 

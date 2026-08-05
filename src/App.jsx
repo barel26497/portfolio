@@ -7,8 +7,8 @@ import Skills from './components/Skills'
 import Contact from './components/Contact'
 import Nav from './components/Nav'
 import SectionBackground from './components/SectionBackground'
-import CursorGlow from './components/CursorGlow'
 import './App.css'
+
 
 function App() {
   const [scrolled, setScrolled] = useState(false)
@@ -25,7 +25,6 @@ function App() {
   return (
     <>
       <SectionBackground />
-      <CursorGlow />
       <Nav scrolled={scrolled} />
 
       <main>

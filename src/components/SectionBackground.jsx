@@ -1,9 +1,8 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import './SectionBackground.css'
 
 const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact']
-
 
 const projectCodeLines = [
   'const project = await build()',
@@ -18,7 +17,6 @@ const projectCodeLines = [
 
 export default function SectionBackground() {
   const [activeSection, setActiveSection] = useState('hero')
-  const backgroundRef = useRef(null)
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
@@ -89,67 +87,13 @@ export default function SectionBackground() {
     }
   }, [])
 
-  useEffect(() => {
-    const background = backgroundRef.current
-
-    if (
-      !background ||
-      reduceMotion ||
-      window.matchMedia('(pointer: coarse)').matches
-    ) {
-      return undefined
-    }
-
-    let frameId = null
-    let targetX = 0
-    let targetY = 0
-    let currentX = 0
-    let currentY = 0
-
-    const renderParallax = () => {
-      currentX += (targetX - currentX) * 0.075
-      currentY += (targetY - currentY) * 0.075
-
-      background.style.setProperty('--background-parallax-x', `${currentX}px`)
-      background.style.setProperty('--background-parallax-y', `${currentY}px`)
-
-      frameId = window.requestAnimationFrame(renderParallax)
-    }
-
-    const handlePointerMove = (event) => {
-      const normalizedX = event.clientX / window.innerWidth - 0.5
-      const normalizedY = event.clientY / window.innerHeight - 0.5
-
-      targetX = normalizedX * 16
-      targetY = normalizedY * 12
-    }
-
-    const resetParallax = () => {
-      targetX = 0
-      targetY = 0
-    }
-
-    frameId = window.requestAnimationFrame(renderParallax)
-    window.addEventListener('pointermove', handlePointerMove, { passive: true })
-    document.documentElement.addEventListener('mouseleave', resetParallax)
-
-    return () => {
-      if (frameId !== null) {
-        window.cancelAnimationFrame(frameId)
-      }
-
-      window.removeEventListener('pointermove', handlePointerMove)
-      document.documentElement.removeEventListener('mouseleave', resetParallax)
-    }
-  }, [reduceMotion])
-
   const isActive = (section) =>
     `section-background__scene section-background__scene--${section} ${
       activeSection === section ? 'section-background__scene--active' : ''
     }`
 
   return (
-    <div ref={backgroundRef} className="section-background" aria-hidden="true">
+    <div className="section-background" aria-hidden="true">
       <div className={isActive('hero')}>
         <motion.div
           className="section-background__orb section-background__orb--hero-primary"
