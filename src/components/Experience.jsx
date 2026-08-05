@@ -7,7 +7,7 @@ const experiences = [
     company: "Youleap",
     location: "Kadima Zoran, Israel",
     period: "July 2026 - Current",
-    thumbnail: "/Images/youleap-logo.png",
+    thumbnail: `${import.meta.env.BASE_URL}Images/youleap-logo.png`,
   },
   {
     role: "RF Engineer",
