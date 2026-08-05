@@ -68,7 +68,13 @@ const projects = [
 export default function Projects() {
   return (
     <section className="projects" id="projects">
-      <div className="section__container projects__container">
+      <motion.div
+        className="section__container projects__container"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.06 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <motion.div
           className="projects__heading"
           initial={{ opacity: 0, y: 30 }}
@@ -194,7 +200,7 @@ export default function Projects() {
             </motion.article>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   )
 }

@@ -4,7 +4,13 @@ import './Education.css'
 export default function Education() {
   return (
     <section className="education" id="education">
-      <div className="section__container education__container">
+      <motion.div
+        className="section__container education__container"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.15 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <motion.h2
           className="section__title"
           initial={{ opacity: 0, y: 30 }}
@@ -53,7 +59,7 @@ export default function Education() {
             </p>
           </div>
         </motion.article>
-      </div>
+      </motion.div>
     </section>
   )
 }

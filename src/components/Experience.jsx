@@ -44,7 +44,13 @@ const experiences = [
 export default function Experience() {
   return (
     <section className="experience" id="experience">
-      <div className="section__container experience__container">
+      <motion.div
+        className="section__container experience__container"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.08 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <motion.h2
           className="section__title"
           initial={{ opacity: 0, y: 30 }}
@@ -107,7 +113,7 @@ export default function Experience() {
             </motion.article>
           ))}
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }

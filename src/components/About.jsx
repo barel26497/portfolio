@@ -4,7 +4,13 @@ import './About.css'
 export default function About() {
   return (
     <section className="about" id="about">
-      <div className="section__container">
+      <motion.div
+        className="section__container"
+        initial={{ opacity: 0, y: 28 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.12 }}
+        transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+      >
         <motion.h2
           className="section__title"
           initial={{ opacity: 0, y: 30 }}
@@ -25,7 +31,7 @@ export default function About() {
             Computer Science graduate and <strong>Full Stack Developer</strong> with hands-on experience building <strong>scalable backend systems</strong> and modern web applications. Particularly interested in <strong>backend design</strong>, <strong>system reliability</strong>, and <strong>AI-powered applications</strong>. Eager to contribute to impactful engineering teams while growing in <strong>production-grade software systems</strong>.
           </p>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   )
 }
