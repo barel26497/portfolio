@@ -1,42 +1,57 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import './SectionBackground.css'
 
-const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact']
+const sectionIds = [
+  'about',
+  'experience',
+  'education',
+  'projects',
+  'skills',
+  'contact',
+]
+
+const projectCodeLines = [
+  'const project = await build()',
+  'docker compose up --build',
+  'POST /api/orders',
+  'queue.publish(order)',
+  'SELECT * FROM projects;',
+  'model.analyze(transcript)',
+  'watchdog.observe(directory)',
+  'return scalableArchitecture',
+]
 
 export default function SectionBackground() {
   const [activeSection, setActiveSection] = useState('hero')
+  const backgroundRef = useRef(null)
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    let animationFrameId = null
+    let frameId = null
 
     const updateActiveSection = () => {
-      if (animationFrameId !== null) {
+      if (frameId !== null) {
         return
       }
 
-      animationFrameId = window.requestAnimationFrame(() => {
-        animationFrameId = null
+      frameId = window.requestAnimationFrame(() => {
+        frameId = null
 
-        const viewportHeight = window.innerHeight
-        const detectionPoint = viewportHeight * 0.48
+        const viewportFocus = window.innerHeight * 0.48
         const aboutSection = document.getElementById('about')
 
         if (
           !aboutSection ||
           aboutSection.getBoundingClientRect().top >
-            viewportHeight * 0.72
+            window.innerHeight * 0.72
         ) {
-          setActiveSection((currentSection) =>
-            currentSection === 'hero' ? currentSection : 'hero'
-          )
-
+          setActiveSection('hero')
           return
         }
 
-        let closestSection = 'about'
-        let closestDistance = Number.POSITIVE_INFINITY
+        let nextSection = 'about'
+        let smallestDistance = Number.POSITIVE_INFINITY
 
         sectionIds.forEach((sectionId) => {
           const section = document.getElementById(sectionId)
@@ -46,25 +61,24 @@ export default function SectionBackground() {
           }
 
           const rect = section.getBoundingClientRect()
+          const visibleTop = Math.max(rect.top, 0)
+          const visibleBottom = Math.min(rect.bottom, window.innerHeight)
+          const isVisible = visibleBottom > visibleTop
 
-          const distanceToSection =
-            detectionPoint < rect.top
-              ? rect.top - detectionPoint
-              : detectionPoint > rect.bottom
-                ? detectionPoint - rect.bottom
-                : 0
+          if (!isVisible) {
+            return
+          }
 
-          if (distanceToSection < closestDistance) {
-            closestDistance = distanceToSection
-            closestSection = sectionId
+          const sectionCenter = rect.top + rect.height / 2
+          const distance = Math.abs(sectionCenter - viewportFocus)
+
+          if (distance < smallestDistance) {
+            smallestDistance = distance
+            nextSection = sectionId
           }
         })
 
-        setActiveSection((currentSection) =>
-          currentSection === closestSection
-            ? currentSection
-            : closestSection
-        )
+        setActiveSection(nextSection)
       })
     }
 
@@ -77,8 +91,8 @@ export default function SectionBackground() {
     window.addEventListener('resize', updateActiveSection)
 
     return () => {
-      if (animationFrameId !== null) {
-        window.cancelAnimationFrame(animationFrameId)
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId)
       }
 
       window.removeEventListener('scroll', updateActiveSection)
@@ -86,20 +100,97 @@ export default function SectionBackground() {
     }
   }, [])
 
-  const getSceneClassName = (sectionName) => {
-    const activeClassName =
-      activeSection === sectionName
-        ? ' section-background__scene--active'
-        : ''
+  useEffect(() => {
+    const background = backgroundRef.current
 
-    return `section-background__scene section-background__scene--${sectionName}${activeClassName}`
-  }
+    if (
+      !background ||
+      reduceMotion ||
+      window.matchMedia('(pointer: coarse)').matches
+    ) {
+      return undefined
+    }
+
+    let frameId = null
+    let targetX = 0
+    let targetY = 0
+    let currentX = 0
+    let currentY = 0
+
+    const renderParallax = () => {
+      currentX += (targetX - currentX) * 0.075
+      currentY += (targetY - currentY) * 0.075
+
+      background.style.setProperty(
+        '--background-parallax-x',
+        `${currentX}px`,
+      )
+
+      background.style.setProperty(
+        '--background-parallax-y',
+        `${currentY}px`,
+      )
+
+      frameId = window.requestAnimationFrame(renderParallax)
+    }
+
+    const handlePointerMove = (event) => {
+      const normalizedX = event.clientX / window.innerWidth - 0.5
+      const normalizedY = event.clientY / window.innerHeight - 0.5
+
+      targetX = normalizedX * 16
+      targetY = normalizedY * 12
+    }
+
+    const resetParallax = () => {
+      targetX = 0
+      targetY = 0
+    }
+
+    frameId = window.requestAnimationFrame(renderParallax)
+
+    window.addEventListener('pointermove', handlePointerMove, {
+      passive: true,
+    })
+
+    document.documentElement.addEventListener(
+      'mouseleave',
+      resetParallax,
+    )
+
+    return () => {
+      if (frameId !== null) {
+        window.cancelAnimationFrame(frameId)
+      }
+
+      window.removeEventListener('pointermove', handlePointerMove)
+
+      document.documentElement.removeEventListener(
+        'mouseleave',
+        resetParallax,
+      )
+    }
+  }, [reduceMotion])
+
+  const isActive = (section) =>
+    `section-background__scene section-background__scene--${section} ${
+      activeSection === section
+        ? 'section-background__scene--active'
+        : ''
+    }`
 
   return (
-    <div className="section-background" aria-hidden="true">
-      <div className={getSceneClassName('hero')}>
+    <div
+      ref={backgroundRef}
+      className="section-background"
+      aria-hidden="true"
+    >
+      <div className={isActive('hero')}>
         <motion.div
-          className="section-background__orb section-background__orb--hero-primary"
+          className="
+            section-background__orb
+            section-background__orb--hero-primary
+          "
           animate={
             reduceMotion
               ? undefined
@@ -117,14 +208,16 @@ export default function SectionBackground() {
         />
 
         <motion.div
-          className="section-background__orb section-background__orb--hero-secondary"
+          className="
+            section-background__orb
+            section-background__orb--hero-secondary
+          "
           animate={
             reduceMotion
               ? undefined
               : {
                   x: [0, -18, 10, 0],
                   y: [0, 15, -12, 0],
-                  scale: [1, 0.98, 1.04, 1],
                 }
           }
           transition={{
@@ -135,12 +228,15 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={getSceneClassName('about')}>
+      <div className={isActive('about')}>
         <div className="section-background__about-spotlight" />
         <div className="section-background__about-dots" />
 
         <motion.div
-          className="section-background__orb section-background__orb--about"
+          className="
+            section-background__orb
+            section-background__orb--about
+          "
           animate={
             reduceMotion
               ? undefined
@@ -158,22 +254,34 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={getSceneClassName('experience')}>
+      <div className={isActive('experience')}>
         <div className="section-background__experience-grid" />
 
-        <div className="section-background__experience-line section-background__experience-line--one" />
+        <div
+          className="
+            section-background__experience-line
+            section-background__experience-line--one
+          "
+        />
 
-        <div className="section-background__experience-line section-background__experience-line--two" />
+        <div
+          className="
+            section-background__experience-line
+            section-background__experience-line--two
+          "
+        />
 
         <motion.div
-          className="section-background__orb section-background__orb--experience"
+          className="
+            section-background__orb
+            section-background__orb--experience
+          "
           animate={
             reduceMotion
               ? undefined
               : {
                   x: [0, 28, 0],
                   y: [-15, 18, -15],
-                  scale: [1, 1.04, 1],
                 }
           }
           transition={{
@@ -184,12 +292,103 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={getSceneClassName('projects')}>
+      <div className={isActive('education')}>
+        <div className="section-background__education-glow" />
+        <div className="section-background__education-grid" />
+
+        <div
+          className="
+            section-background__education-ring
+            section-background__education-ring--one
+          "
+        />
+
+        <div
+          className="
+            section-background__education-ring
+            section-background__education-ring--two
+          "
+        />
+
+        <motion.div
+          className="
+            section-background__orb
+            section-background__orb--education-primary
+          "
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  x: [0, -24, 12, 0],
+                  y: [0, 18, -10, 0],
+                  scale: [1, 1.06, 0.98, 1],
+                }
+          }
+          transition={{
+            duration: 25,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+
+        <motion.div
+          className="
+            section-background__orb
+            section-background__orb--education-secondary
+          "
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  x: [0, 20, -10, 0],
+                  y: [0, -16, 12, 0],
+                }
+          }
+          transition={{
+            duration: 29,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
+      </div>
+
+      <div className={isActive('projects')}>
         <div className="section-background__projects-grid" />
         <div className="section-background__projects-scan" />
 
         <motion.div
-          className="section-background__orb section-background__orb--projects"
+          className="section-background__code"
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  y: [-24, 24],
+                }
+          }
+          transition={{
+            duration: 18,
+            repeat: Infinity,
+            repeatType: 'mirror',
+            ease: 'easeInOut',
+          }}
+        >
+          {projectCodeLines.map((line, index) => (
+            <span
+              key={`${line}-${index}`}
+              className={`section-background__code-line section-background__code-line--${
+                (index % 8) + 1
+              }`}
+            >
+              {line}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          className="
+            section-background__orb
+            section-background__orb--projects
+          "
           animate={
             reduceMotion
               ? undefined
@@ -205,44 +404,43 @@ export default function SectionBackground() {
             ease: 'easeInOut',
           }}
         />
-
-        <motion.div
-          className="section-background__orb section-background__orb--projects-secondary"
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  x: [0, -22, 0],
-                  y: [0, 20, 0],
-                  scale: [1, 0.96, 1],
-                }
-          }
-          transition={{
-            duration: 27,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
       </div>
 
-      <div className={getSceneClassName('skills')}>
+      <div className={isActive('skills')}>
         <div className="section-background__skills-grid" />
 
-        <div className="section-background__circuit section-background__circuit--one" />
+        <div
+          className="
+            section-background__circuit
+            section-background__circuit--one
+          "
+        />
 
-        <div className="section-background__circuit section-background__circuit--two" />
+        <div
+          className="
+            section-background__circuit
+            section-background__circuit--two
+          "
+        />
 
-        <div className="section-background__circuit section-background__circuit--three" />
+        <div
+          className="
+            section-background__circuit
+            section-background__circuit--three
+          "
+        />
 
         <motion.div
-          className="section-background__orb section-background__orb--skills-primary"
+          className="
+            section-background__orb
+            section-background__orb--skills-primary
+          "
           animate={
             reduceMotion
               ? undefined
               : {
                   x: [0, 30, 0],
                   y: [0, -22, 0],
-                  scale: [1, 1.04, 1],
                 }
           }
           transition={{
@@ -253,14 +451,16 @@ export default function SectionBackground() {
         />
 
         <motion.div
-          className="section-background__orb section-background__orb--skills-secondary"
+          className="
+            section-background__orb
+            section-background__orb--skills-secondary
+          "
           animate={
             reduceMotion
               ? undefined
               : {
                   x: [0, -22, 0],
                   y: [0, 18, 0],
-                  scale: [1, 0.97, 1],
                 }
           }
           transition={{
@@ -271,9 +471,12 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={getSceneClassName('contact')}>
+      <div className={isActive('contact')}>
         <motion.div
-          className="section-background__aurora section-background__aurora--one"
+          className="
+            section-background__aurora
+            section-background__aurora--one
+          "
           animate={
             reduceMotion
               ? undefined
@@ -290,7 +493,10 @@ export default function SectionBackground() {
         />
 
         <motion.div
-          className="section-background__aurora section-background__aurora--two"
+          className="
+            section-background__aurora
+            section-background__aurora--two
+          "
           animate={
             reduceMotion
               ? undefined
