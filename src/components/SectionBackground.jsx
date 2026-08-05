@@ -4,6 +4,7 @@ import './SectionBackground.css'
 
 const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact']
 
+
 const projectCodeLines = [
   'const project = await build()',
   'docker compose up --build',
