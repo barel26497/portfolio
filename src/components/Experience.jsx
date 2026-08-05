@@ -1,87 +1,78 @@
-import { motion } from "framer-motion";
-import "./Experience.css";
+.experience__card {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
 
-const experiences = [
-  {
-    role: "Software Developer",
-    company: "Youleap",
-    location: "Kadima Zoran, Israel",
-    period: "July 2026 - Current",
-  },
-  {
-    role: "RF Engineer",
-    company: "Beeper",
-    location: "Ramat Gan, Israel",
-    period: "May 2019 - December 2022",
-    points: [
-      "Troubleshot and maintained complex technical systems in the field. Worked cross-functionally to resolve issues and support system reliability.",
-    ],
-  },
-  {
-    role: "C4I's Systems Operators Commander",
-    company: "IDF",
-    location: "Jerusalem, Israel",
-    period: "February 2016 - May 2019",
-    points: [
-      "Led C4I operations and managed critical military communication systems. Oversaw advanced tech platforms (Elbit DAP, Motorola, WiMAX) supporting field missions.",
-    ],
-  },
-  {
-    role: "Online Marketing Manager",
-    company: "Optinize",
-    location: "Tel Aviv, Israel",
-    period: "January 2015 - February 2016",
-    points: [
-      "Built and customized marketing content using HTML and CSS. Collaborated with international clients to support tech-driven campaigns.",
-    ],
-  },
-];
+.experience__thumbnail-wrapper {
+  width: 72px;
+  height: 72px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 16px;
+  background: #ffffff;
+  padding: 0.6rem;
+}
 
-export default function Experience() {
-  return (
-    <section className="experience" id="experience">
-      <div className="section__container experience__container">
-        <motion.h2
-          className="section__title"
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-80px" }}
-          transition={{ duration: 0.6 }}
-        >
-          Experience
-        </motion.h2>
-        <div className="experience__timeline">
-          {experiences.map((exp, i) => (
-            <motion.div
-              key={exp.company + exp.role}
-              className="experience__item"
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true, margin: "-40px" }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-            >
-              <div className="experience__dot" />
-              <div className="experience__card">
-                <div className="experience__header">
-                  <h3 className="experience__role">{exp.role}</h3>
-                  <span className="experience__period">{exp.period}</span>
-                </div>
-                <p className="experience__company">{exp.company}</p>
-                <p className="experience__location">{exp.location}</p>
-                <ul className="experience__points">
-                  {exp.points && (
-                    <ul className="experience__points">
-                      {exp.points.map((point, j) => (
-                        <li key={j}>{point}</li>
-                      ))}
-                    </ul>
-                  )}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+.experience__thumbnail {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: contain;
+}
+
+.experience__content {
+  min-width: 0;
+  flex: 1;
+}
+
+.experience__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.experience__role {
+  margin: 0;
+}
+
+.experience__period {
+  flex-shrink: 0;
+  white-space: nowrap;
+}
+
+.experience__points {
+  margin: 1rem 0 0;
+  padding-left: 1.25rem;
+}
+
+.experience__points li {
+  line-height: 1.7;
+}
+
+@media (max-width: 640px) {
+  .experience__card {
+    gap: 1rem;
+  }
+
+  .experience__thumbnail-wrapper {
+    width: 56px;
+    height: 56px;
+    border-radius: 12px;
+    padding: 0.45rem;
+  }
+
+  .experience__header {
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  .experience__period {
+    white-space: normal;
+  }
 }
