@@ -3,6 +3,7 @@ import { motion, useMotionValue, useReducedMotion, useSpring } from 'framer-moti
 import MagneticLink from './MagneticLink'
 import './Projects.css'
 
+
 const projects = [
   {
     title: 'Secure File-Sharing System',
