@@ -4,45 +4,39 @@ import './SectionBackground.css'
 
 const sectionIds = ['about', 'experience', 'projects', 'skills', 'contact']
 
-const projectCodeLines = [
-  'const project = await build()',
-  'docker compose up --build',
-  'POST /api/orders',
-  'queue.publish(order)',
-  'SELECT * FROM projects;',
-  'model.analyze(transcript)',
-  'watchdog.observe(directory)',
-  'return scalableArchitecture',
-]
-
 export default function SectionBackground() {
   const [activeSection, setActiveSection] = useState('hero')
   const reduceMotion = useReducedMotion()
 
   useEffect(() => {
-    let frameId = null
+    let animationFrameId = null
 
     const updateActiveSection = () => {
-      if (frameId !== null) {
+      if (animationFrameId !== null) {
         return
       }
 
-      frameId = window.requestAnimationFrame(() => {
-        frameId = null
+      animationFrameId = window.requestAnimationFrame(() => {
+        animationFrameId = null
 
-        const viewportFocus = window.innerHeight * 0.48
+        const viewportHeight = window.innerHeight
+        const detectionPoint = viewportHeight * 0.48
         const aboutSection = document.getElementById('about')
 
         if (
           !aboutSection ||
-          aboutSection.getBoundingClientRect().top > window.innerHeight * 0.72
+          aboutSection.getBoundingClientRect().top >
+            viewportHeight * 0.72
         ) {
-          setActiveSection('hero')
+          setActiveSection((currentSection) =>
+            currentSection === 'hero' ? currentSection : 'hero'
+          )
+
           return
         }
 
-        let nextSection = 'about'
-        let smallestDistance = Number.POSITIVE_INFINITY
+        let closestSection = 'about'
+        let closestDistance = Number.POSITIVE_INFINITY
 
         sectionIds.forEach((sectionId) => {
           const section = document.getElementById(sectionId)
@@ -52,34 +46,39 @@ export default function SectionBackground() {
           }
 
           const rect = section.getBoundingClientRect()
-          const visibleTop = Math.max(rect.top, 0)
-          const visibleBottom = Math.min(rect.bottom, window.innerHeight)
-          const isVisible = visibleBottom > visibleTop
 
-          if (!isVisible) {
-            return
-          }
+          const distanceToSection =
+            detectionPoint < rect.top
+              ? rect.top - detectionPoint
+              : detectionPoint > rect.bottom
+                ? detectionPoint - rect.bottom
+                : 0
 
-          const sectionCenter = rect.top + rect.height / 2
-          const distance = Math.abs(sectionCenter - viewportFocus)
-
-          if (distance < smallestDistance) {
-            smallestDistance = distance
-            nextSection = sectionId
+          if (distanceToSection < closestDistance) {
+            closestDistance = distanceToSection
+            closestSection = sectionId
           }
         })
 
-        setActiveSection(nextSection)
+        setActiveSection((currentSection) =>
+          currentSection === closestSection
+            ? currentSection
+            : closestSection
+        )
       })
     }
 
     updateActiveSection()
-    window.addEventListener('scroll', updateActiveSection, { passive: true })
+
+    window.addEventListener('scroll', updateActiveSection, {
+      passive: true,
+    })
+
     window.addEventListener('resize', updateActiveSection)
 
     return () => {
-      if (frameId !== null) {
-        window.cancelAnimationFrame(frameId)
+      if (animationFrameId !== null) {
+        window.cancelAnimationFrame(animationFrameId)
       }
 
       window.removeEventListener('scroll', updateActiveSection)
@@ -87,14 +86,18 @@ export default function SectionBackground() {
     }
   }, [])
 
-  const isActive = (section) =>
-    `section-background__scene section-background__scene--${section} ${
-      activeSection === section ? 'section-background__scene--active' : ''
-    }`
+  const getSceneClassName = (sectionName) => {
+    const activeClassName =
+      activeSection === sectionName
+        ? ' section-background__scene--active'
+        : ''
+
+    return `section-background__scene section-background__scene--${sectionName}${activeClassName}`
+  }
 
   return (
     <div className="section-background" aria-hidden="true">
-      <div className={isActive('hero')}>
+      <div className={getSceneClassName('hero')}>
         <motion.div
           className="section-background__orb section-background__orb--hero-primary"
           animate={
@@ -121,6 +124,7 @@ export default function SectionBackground() {
               : {
                   x: [0, -18, 10, 0],
                   y: [0, 15, -12, 0],
+                  scale: [1, 0.98, 1.04, 1],
                 }
           }
           transition={{
@@ -131,7 +135,7 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={isActive('about')}>
+      <div className={getSceneClassName('about')}>
         <div className="section-background__about-spotlight" />
         <div className="section-background__about-dots" />
 
@@ -154,9 +158,11 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={isActive('experience')}>
+      <div className={getSceneClassName('experience')}>
         <div className="section-background__experience-grid" />
+
         <div className="section-background__experience-line section-background__experience-line--one" />
+
         <div className="section-background__experience-line section-background__experience-line--two" />
 
         <motion.div
@@ -167,6 +173,7 @@ export default function SectionBackground() {
               : {
                   x: [0, 28, 0],
                   y: [-15, 18, -15],
+                  scale: [1, 1.04, 1],
                 }
           }
           transition={{
@@ -177,31 +184,9 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={isActive('projects')}>
+      <div className={getSceneClassName('projects')}>
         <div className="section-background__projects-grid" />
         <div className="section-background__projects-scan" />
-
-        <motion.div
-          className="section-background__code"
-          animate={reduceMotion ? undefined : { y: [-24, 24] }}
-          transition={{
-            duration: 18,
-            repeat: Infinity,
-            repeatType: 'mirror',
-            ease: 'easeInOut',
-          }}
-        >
-          {projectCodeLines.map((line, index) => (
-            <span
-              key={`${line}-${index}`}
-              className={`section-background__code-line section-background__code-line--${
-                (index % 8) + 1
-              }`}
-            >
-              {line}
-            </span>
-          ))}
-        </motion.div>
 
         <motion.div
           className="section-background__orb section-background__orb--projects"
@@ -220,12 +205,33 @@ export default function SectionBackground() {
             ease: 'easeInOut',
           }}
         />
+
+        <motion.div
+          className="section-background__orb section-background__orb--projects-secondary"
+          animate={
+            reduceMotion
+              ? undefined
+              : {
+                  x: [0, -22, 0],
+                  y: [0, 20, 0],
+                  scale: [1, 0.96, 1],
+                }
+          }
+          transition={{
+            duration: 27,
+            repeat: Infinity,
+            ease: 'easeInOut',
+          }}
+        />
       </div>
 
-      <div className={isActive('skills')}>
+      <div className={getSceneClassName('skills')}>
         <div className="section-background__skills-grid" />
+
         <div className="section-background__circuit section-background__circuit--one" />
+
         <div className="section-background__circuit section-background__circuit--two" />
+
         <div className="section-background__circuit section-background__circuit--three" />
 
         <motion.div
@@ -236,6 +242,7 @@ export default function SectionBackground() {
               : {
                   x: [0, 30, 0],
                   y: [0, -22, 0],
+                  scale: [1, 1.04, 1],
                 }
           }
           transition={{
@@ -253,6 +260,7 @@ export default function SectionBackground() {
               : {
                   x: [0, -22, 0],
                   y: [0, 18, 0],
+                  scale: [1, 0.97, 1],
                 }
           }
           transition={{
@@ -263,7 +271,7 @@ export default function SectionBackground() {
         />
       </div>
 
-      <div className={isActive('contact')}>
+      <div className={getSceneClassName('contact')}>
         <motion.div
           className="section-background__aurora section-background__aurora--one"
           animate={
