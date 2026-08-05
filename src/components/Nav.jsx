@@ -5,6 +5,7 @@ import './Nav.css'
 const navLinks = [
   { href: '#about', label: 'About' },
   { href: '#experience', label: 'Experience' },
+  { href: '#education', label: 'Education' },
   { href: '#projects', label: 'Projects' },
   { href: '#skills', label: 'Skills' },
   { href: '#contact', label: 'Contact' },
@@ -13,12 +14,15 @@ const navLinks = [
 export default function Nav({ scrolled }) {
   const [menuOpen, setMenuOpen] = useState(false)
 
-  // Close the mobile menu if we switch back to desktop width
   useEffect(() => {
     const onResize = () => {
-      if (window.innerWidth > 768) setMenuOpen(false)
+      if (window.innerWidth > 768) {
+        setMenuOpen(false)
+      }
     }
+
     window.addEventListener('resize', onResize)
+
     return () => window.removeEventListener('resize', onResize)
   }, [])
 
@@ -27,7 +31,10 @@ export default function Nav({ scrolled }) {
       className={`nav ${scrolled ? 'nav--scrolled' : ''}`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+      transition={{
+        duration: 0.6,
+        ease: [0.22, 1, 0.36, 1],
+      }}
     >
       <nav className="nav__inner">
         <a href="#" className="nav__logo">
@@ -40,21 +47,23 @@ export default function Nav({ scrolled }) {
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           aria-controls="primary-navigation"
-          onClick={() => setMenuOpen((v) => !v)}
+          onClick={() => setMenuOpen((currentValue) => !currentValue)}
         >
           <span className="nav__toggleIcon" aria-hidden="true" />
-
         </button>
 
         <ul className="nav__links">
-          {navLinks.map((link, i) => (
+          {navLinks.map((link, index) => (
             <li key={link.href}>
               <motion.a
                 href={link.href}
                 className="nav__link"
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 * i + 0.3, duration: 0.4 }}
+                transition={{
+                  delay: 0.1 * index + 0.3,
+                  duration: 0.4,
+                }}
                 whileHover={{ color: '#00d4aa' }}
               >
                 {link.label}
@@ -71,7 +80,10 @@ export default function Nav({ scrolled }) {
               initial={{ opacity: 0, y: -8 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -8 }}
-              transition={{ duration: 0.18, ease: 'easeOut' }}
+              transition={{
+                duration: 0.18,
+                ease: 'easeOut',
+              }}
             >
               {navLinks.map((link) => (
                 <li key={link.href}>
