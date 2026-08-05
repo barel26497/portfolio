@@ -9,6 +9,7 @@ import Nav from './components/Nav'
 import SectionBackground from './components/SectionBackground'
 import './App.css'
 
+
 function App() {
   const [scrolled, setScrolled] = useState(false)
 
