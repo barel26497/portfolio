@@ -98,6 +98,8 @@ export default function SectionBackground() {
   return (
     <div className="section-background" aria-hidden="true">
       <div className={getSceneClassName('hero')}>
+        <div className="section-background__hero-code section-background__hero-code--one" />
+        <div className="section-background__hero-code section-background__hero-code--two" />
         <motion.div
           className="section-background__orb section-background__orb--hero-primary"
           animate={
@@ -138,6 +140,8 @@ export default function SectionBackground() {
       <div className={getSceneClassName('about')}>
         <div className="section-background__about-spotlight" />
         <div className="section-background__about-dots" />
+        <div className="section-background__about-frame" />
+        <div className="section-background__about-signature" />
 
         <motion.div
           className="section-background__orb section-background__orb--about"
@@ -160,6 +164,12 @@ export default function SectionBackground() {
 
       <div className={getSceneClassName('experience')}>
         <div className="section-background__experience-grid" />
+        <div className="section-background__timeline">
+          <span />
+          <span />
+          <span />
+          <span />
+        </div>
 
         <div className="section-background__experience-line section-background__experience-line--one" />
 
@@ -188,6 +198,8 @@ export default function SectionBackground() {
         <div className="section-background__education-grid" />
         <div className="section-background__education-ring section-background__education-ring--one" />
         <div className="section-background__education-ring section-background__education-ring--two" />
+        <div className="section-background__education-cap" />
+        <div className="section-background__education-path" />
 
         <motion.div
           className="section-background__orb section-background__orb--education-primary"
@@ -229,6 +241,9 @@ export default function SectionBackground() {
       <div className={getSceneClassName('projects')}>
         <div className="section-background__projects-grid" />
         <div className="section-background__projects-scan" />
+        <div className="section-background__project-window section-background__project-window--one" />
+        <div className="section-background__project-window section-background__project-window--two" />
+        <div className="section-background__project-window section-background__project-window--three" />
 
         <motion.div
           className="section-background__orb section-background__orb--projects"
@@ -314,6 +329,12 @@ export default function SectionBackground() {
       </div>
 
       <div className={getSceneClassName('contact')}>
+        <div className="section-background__contact-envelope" />
+        <div className="section-background__contact-route">
+          <span />
+          <span />
+          <span />
+        </div>
         <motion.div
           className="section-background__aurora section-background__aurora--one"
           animate={
