@@ -40,12 +40,12 @@
   background:
     radial-gradient(
       circle at 76% 14%,
-      rgba(0, 212, 170, 0.06),
+      rgba(0, 212, 170, 0.095),
       transparent 38%
     ),
     radial-gradient(
       circle at 14% 78%,
-      rgba(99, 102, 241, 0.045),
+      rgba(99, 102, 241, 0.075),
       transparent 36%
     ),
     #0a0a0f;
@@ -56,7 +56,7 @@
   right: -180px;
   width: 620px;
   height: 620px;
-  background: rgba(0, 212, 170, 0.13);
+  background: rgba(0, 212, 170, 0.17);
 }
 
 .section-background__orb--hero-secondary {
@@ -64,7 +64,7 @@
   left: -180px;
   width: 520px;
   height: 520px;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.14);
 }
 
 /* About */
@@ -73,13 +73,13 @@
   background:
     radial-gradient(
       ellipse at 24% 48%,
-      rgba(0, 212, 170, 0.045),
+      rgba(0, 212, 170, 0.075),
       transparent 54%
     ),
     linear-gradient(
       180deg,
       #0a0a0f 0%,
-      #08100e 48%,
+      #071511 48%,
       #0a0a0f 100%
     );
 }
@@ -90,8 +90,8 @@
   background:
     radial-gradient(
       ellipse at 24% 48%,
-      rgba(0, 212, 170, 0.1) 0%,
-      rgba(0, 212, 170, 0.028) 32%,
+      rgba(0, 212, 170, 0.145) 0%,
+      rgba(0, 212, 170, 0.05) 32%,
       transparent 64%
     );
 }
@@ -125,7 +125,7 @@
   bottom: -170px;
   width: 500px;
   height: 500px;
-  background: rgba(0, 212, 170, 0.085);
+  background: rgba(0, 212, 170, 0.12);
 }
 
 /* Experience */
@@ -134,12 +134,12 @@
   background:
     radial-gradient(
       ellipse at 18% 42%,
-      rgba(99, 102, 241, 0.09),
+      rgba(99, 102, 241, 0.13),
       transparent 48%
     ),
     radial-gradient(
       ellipse at 82% 76%,
-      rgba(0, 212, 170, 0.04),
+      rgba(0, 212, 170, 0.065),
       transparent 42%
     ),
     #0a0a0f;
@@ -154,7 +154,7 @@
       90deg,
       transparent 0,
       transparent calc(12.5% - 1px),
-      rgba(99, 102, 241, 0.1) 12.5%
+      rgba(99, 102, 241, 0.14) 12.5%
     );
   mask-image:
     linear-gradient(
@@ -206,7 +206,7 @@
   left: -180px;
   width: 540px;
   height: 540px;
-  background: rgba(99, 102, 241, 0.1);
+  background: rgba(99, 102, 241, 0.14);
 }
 
 /* Education */
@@ -215,18 +215,18 @@
   background:
     radial-gradient(
       ellipse at 72% 30%,
-      rgba(99, 102, 241, 0.12),
+      rgba(99, 102, 241, 0.16),
       transparent 44%
     ),
     radial-gradient(
       ellipse at 20% 76%,
-      rgba(59, 130, 246, 0.06),
+      rgba(59, 130, 246, 0.09),
       transparent 42%
     ),
     linear-gradient(
       180deg,
       #090a10 0%,
-      #0b0b18 50%,
+      #0d0d21 50%,
       #090a10 100%
     );
 }
@@ -288,7 +288,7 @@
   right: -130px;
   width: 520px;
   height: 520px;
-  background: rgba(99, 102, 241, 0.12);
+  background: rgba(99, 102, 241, 0.16);
 }
 
 .section-background__orb--education-secondary {
@@ -296,7 +296,7 @@
   left: -120px;
   width: 470px;
   height: 470px;
-  background: rgba(59, 130, 246, 0.075);
+  background: rgba(59, 130, 246, 0.105);
 }
 
 /* Projects */
@@ -305,18 +305,18 @@
   background:
     radial-gradient(
       ellipse at 75% 34%,
-      rgba(0, 212, 170, 0.115),
+      rgba(0, 212, 170, 0.155),
       transparent 44%
     ),
     radial-gradient(
       ellipse at 18% 76%,
-      rgba(34, 211, 238, 0.045),
+      rgba(34, 211, 238, 0.075),
       transparent 42%
     ),
     linear-gradient(
       180deg,
       #090a0e 0%,
-      #06100d 50%,
+      #051711 50%,
       #090a0e 100%
     );
 }
@@ -361,7 +361,7 @@
       180deg,
       transparent 0,
       transparent 5px,
-      rgba(0, 212, 170, 0.045) 6px
+      rgba(0, 212, 170, 0.075) 6px
     );
 }
 
@@ -370,7 +370,7 @@
   bottom: -180px;
   width: 580px;
   height: 580px;
-  background: rgba(0, 212, 170, 0.115);
+  background: rgba(0, 212, 170, 0.155);
 }
 
 .section-background__orb--projects-secondary {
@@ -378,7 +378,7 @@
   left: -170px;
   width: 480px;
   height: 480px;
-  background: rgba(34, 211, 238, 0.055);
+  background: rgba(34, 211, 238, 0.085);
 }
 
 /* Skills */
@@ -507,12 +507,12 @@
   background:
     radial-gradient(
       ellipse at center bottom,
-      rgba(0, 212, 170, 0.07),
+      rgba(0, 212, 170, 0.105),
       transparent 54%
     ),
     radial-gradient(
       ellipse at 50% 30%,
-      rgba(99, 102, 241, 0.04),
+      rgba(99, 102, 241, 0.07),
       transparent 48%
     ),
     #090a0e;
@@ -525,7 +525,7 @@
   height: 270px;
   border-radius: 50%;
   filter: blur(88px);
-  opacity: 0.16;
+  opacity: 0.22;
 }
 
 .section-background__aurora--one {
