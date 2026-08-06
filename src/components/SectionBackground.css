@@ -1099,3 +1099,223 @@
     opacity: 0.42;
   }
 }
+
+/* Refined About, Experience and Education motifs */
+.section-background__about-frame,
+.section-background__about-signature,
+.section-background__timeline,
+.section-background__education-cap,
+.section-background__education-path {
+  display: none;
+}
+
+.section-background__about-halo {
+  position: absolute;
+  top: 50%;
+  right: 7%;
+  width: 390px;
+  height: 390px;
+  opacity: 0.26;
+  transform: translateY(-50%);
+  border: 1px solid rgba(0, 212, 170, 0.2);
+  border-radius: 50%;
+  box-shadow:
+    inset 0 0 70px rgba(0, 212, 170, 0.035),
+    0 0 55px rgba(0, 212, 170, 0.06);
+}
+
+.section-background__about-halo::before,
+.section-background__about-halo::after,
+.section-background__about-halo span {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+}
+
+.section-background__about-halo::before {
+  inset: 42px;
+  border: 1px solid rgba(0, 212, 170, 0.27);
+}
+
+.section-background__about-halo::after {
+  inset: 105px;
+  border: 1px solid rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 32px rgba(99, 102, 241, 0.08);
+}
+
+.section-background__about-halo span:nth-child(1) {
+  top: 24px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: rgba(0, 212, 170, 0.76);
+  box-shadow: 0 0 20px rgba(0, 212, 170, 0.58);
+}
+
+.section-background__about-halo span:nth-child(2) {
+  right: 58px;
+  bottom: 70px;
+  width: 6px;
+  height: 6px;
+  background: rgba(99, 102, 241, 0.78);
+  box-shadow: 0 0 18px rgba(99, 102, 241, 0.55);
+}
+
+.section-background__about-halo span:nth-child(3) {
+  top: 49%;
+  left: -4px;
+  width: 7px;
+  height: 7px;
+  background: rgba(0, 212, 170, 0.7);
+  box-shadow: 0 0 18px rgba(0, 212, 170, 0.5);
+}
+
+.section-background__about-accent {
+  position: absolute;
+  top: 18%;
+  right: 5%;
+  width: 180px;
+  height: 180px;
+  opacity: 0.2;
+  border-top: 1px solid rgba(0, 212, 170, 0.5);
+  border-right: 1px solid rgba(0, 212, 170, 0.5);
+  border-radius: 0 24px 0 0;
+}
+
+.section-background__experience-growth {
+  position: absolute;
+  right: 8%;
+  bottom: 14%;
+  width: 280px;
+  height: 210px;
+  opacity: 0.4;
+  border-left: 1px solid rgba(129, 140, 248, 0.24);
+  border-bottom: 1px solid rgba(129, 140, 248, 0.24);
+}
+
+.section-background__experience-growth::before {
+  content: '';
+  position: absolute;
+  left: 26px;
+  right: 4px;
+  bottom: 30px;
+  height: 110px;
+  border-top: 1px solid rgba(0, 212, 170, 0.5);
+  border-radius: 50%;
+  transform: rotate(-18deg);
+  filter: drop-shadow(0 0 10px rgba(0, 212, 170, 0.18));
+}
+
+.section-background__experience-growth span {
+  position: absolute;
+  bottom: 0;
+  width: 30px;
+  border: 1px solid rgba(129, 140, 248, 0.45);
+  border-bottom: 0;
+  border-radius: 7px 7px 0 0;
+  background: linear-gradient(180deg, rgba(99, 102, 241, 0.08), transparent);
+}
+
+.section-background__experience-growth span:nth-child(1) { left: 28px; height: 48px; }
+.section-background__experience-growth span:nth-child(2) { left: 86px; height: 84px; }
+.section-background__experience-growth span:nth-child(3) { left: 144px; height: 126px; }
+.section-background__experience-growth span:nth-child(4) { left: 202px; height: 174px; }
+
+.section-background__education-book {
+  position: absolute;
+  top: 20%;
+  left: 9%;
+  width: 230px;
+  height: 145px;
+  opacity: 0.48;
+  transform: rotate(-7deg);
+  filter: drop-shadow(0 0 20px rgba(129, 140, 248, 0.15));
+}
+
+.section-background__education-book::before,
+.section-background__education-book::after {
+  content: '';
+  position: absolute;
+  top: 12px;
+  width: 108px;
+  height: 120px;
+  border: 1px solid rgba(129, 140, 248, 0.58);
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.035), transparent);
+}
+
+.section-background__education-book::before {
+  left: 4px;
+  border-radius: 12px 2px 18px 8px;
+  transform: skewY(5deg);
+}
+
+.section-background__education-book::after {
+  right: 4px;
+  border-radius: 2px 12px 8px 18px;
+  transform: skewY(-5deg);
+}
+
+.section-background__education-diploma {
+  position: absolute;
+  left: 16%;
+  bottom: 14%;
+  width: 250px;
+  height: 92px;
+  opacity: 0.42;
+  border: 1px solid rgba(96, 165, 250, 0.54);
+  border-radius: 12px;
+  transform: rotate(7deg);
+  box-shadow: inset 0 0 28px rgba(96, 165, 250, 0.035);
+}
+
+.section-background__education-diploma::before {
+  content: '';
+  position: absolute;
+  top: 22px;
+  left: 28px;
+  width: 130px;
+  height: 1px;
+  background: rgba(129, 140, 248, 0.55);
+  box-shadow: 0 18px 0 rgba(129, 140, 248, 0.34);
+}
+
+.section-background__education-diploma::after {
+  content: '';
+  position: absolute;
+  top: 22px;
+  right: 25px;
+  width: 42px;
+  height: 42px;
+  border: 1px solid rgba(96, 165, 250, 0.7);
+  border-radius: 50%;
+  box-shadow:
+    0 0 0 6px rgba(96, 165, 250, 0.035),
+    0 0 18px rgba(96, 165, 250, 0.14);
+}
+
+@media (max-width: 768px) {
+  .section-background__about-halo {
+    right: -90px;
+    width: 270px;
+    height: 270px;
+    opacity: 0.18;
+  }
+
+  .section-background__about-accent,
+  .section-background__education-diploma {
+    display: none;
+  }
+
+  .section-background__experience-growth {
+    right: -55px;
+    opacity: 0.26;
+    transform: scale(0.76);
+  }
+
+  .section-background__education-book {
+    left: 2%;
+    opacity: 0.3;
+    transform: rotate(-7deg) scale(0.75);
+    transform-origin: top left;
+  }
+}
