@@ -8,6 +8,14 @@ const experiences = [
     location: "Kadima Zoran, Israel",
     period: "July 2026 - Current",
     thumbnail: `${import.meta.env.BASE_URL}Images/youleap-logo.jpg`,
+    points: [
+      "Collaborate with clients to gather requirements and translate business needs into technical solutions.",
+      "Develop modern, responsive eCommerce storefronts using React, Next.js, TypeScript, JavaScript, Tailwind CSS, HTML, and CSS.",
+      "Configure and manage commerce data within the Medusa headless commerce platform.",
+      "Build custom features and workflows to satisfy client-specific business requirements.",
+      "Integrate frontend applications with the Medusa backend through APIs and commerce services.",
+      "Deliver tailored eCommerce solutions while collaborating with cross-functional teams throughout the implementation process.",
+    ],
   },
   {
     role: "RF Engineer",
