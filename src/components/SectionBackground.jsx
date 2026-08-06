@@ -98,8 +98,6 @@ export default function SectionBackground() {
   return (
     <div className="section-background" aria-hidden="true">
       <div className={getSceneClassName('hero')}>
-        <div className="section-background__hero-code section-background__hero-code--one" />
-        <div className="section-background__hero-code section-background__hero-code--two" />
         <motion.div
           className="section-background__orb section-background__orb--hero-primary"
           animate={
@@ -140,12 +138,6 @@ export default function SectionBackground() {
       <div className={getSceneClassName('about')}>
         <div className="section-background__about-spotlight" />
         <div className="section-background__about-dots" />
-        <div className="section-background__about-halo">
-          <span />
-          <span />
-          <span />
-        </div>
-        <div className="section-background__about-accent" />
 
         <motion.div
           className="section-background__orb section-background__orb--about"
@@ -167,35 +159,7 @@ export default function SectionBackground() {
       </div>
 
       <div className={getSceneClassName('experience')}>
-        <div className="section-background__experience-grid" />
-        <div className="section-background__experience-growth">
-          <span />
-          <span />
-          <span />
-          <span />
-        </div>
-
-        <div className="section-background__experience-line section-background__experience-line--one" />
-
-        <div className="section-background__experience-line section-background__experience-line--two" />
-
-        <motion.div
-          className="section-background__orb section-background__orb--experience"
-          animate={
-            reduceMotion
-              ? undefined
-              : {
-                  x: [0, 28, 0],
-                  y: [-15, 18, -15],
-                  scale: [1, 1.04, 1],
-                }
-          }
-          transition={{
-            duration: 26,
-            repeat: Infinity,
-            ease: 'easeInOut',
-          }}
-        />
+        <div className="section-background__experience-spotlight" />
       </div>
 
       <div className={getSceneClassName('education')}>
@@ -204,6 +168,7 @@ export default function SectionBackground() {
         <div className="section-background__education-ring section-background__education-ring--two" />
         <div className="section-background__education-book" />
         <div className="section-background__education-diploma" />
+        <div className="section-background__education-cap" />
 
         <motion.div
           className="section-background__orb section-background__orb--education-primary"
