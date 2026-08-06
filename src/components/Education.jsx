@@ -53,9 +53,7 @@ export default function Education() {
             </div>
 
             <p className="education__description">
-              Bachelor of Science in Computer Science with a strong foundation
-              in software engineering, algorithms, data structures, databases,
-              computer networks, and modern software development.
+              BS.c in Computer Science with a solid foundation in software engineering, algorithms, data structures, databases, networking, and software development.
             </p>
           </div>
         </motion.article>
