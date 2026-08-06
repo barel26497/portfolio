@@ -140,8 +140,12 @@ export default function SectionBackground() {
       <div className={getSceneClassName('about')}>
         <div className="section-background__about-spotlight" />
         <div className="section-background__about-dots" />
-        <div className="section-background__about-frame" />
-        <div className="section-background__about-signature" />
+        <div className="section-background__about-halo">
+          <span />
+          <span />
+          <span />
+        </div>
+        <div className="section-background__about-accent" />
 
         <motion.div
           className="section-background__orb section-background__orb--about"
@@ -164,7 +168,7 @@ export default function SectionBackground() {
 
       <div className={getSceneClassName('experience')}>
         <div className="section-background__experience-grid" />
-        <div className="section-background__timeline">
+        <div className="section-background__experience-growth">
           <span />
           <span />
           <span />
@@ -198,8 +202,8 @@ export default function SectionBackground() {
         <div className="section-background__education-grid" />
         <div className="section-background__education-ring section-background__education-ring--one" />
         <div className="section-background__education-ring section-background__education-ring--two" />
-        <div className="section-background__education-cap" />
-        <div className="section-background__education-path" />
+        <div className="section-background__education-book" />
+        <div className="section-background__education-diploma" />
 
         <motion.div
           className="section-background__orb section-background__orb--education-primary"
