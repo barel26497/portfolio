@@ -956,3 +956,146 @@
     opacity: 0.17;
   }
 }
+
+/* Increased motif visibility */
+.section-background__hero-code {
+  width: 170px;
+  height: 112px;
+  opacity: 0.46;
+  filter: drop-shadow(0 0 16px rgba(0, 212, 170, 0.16));
+}
+
+.section-background__hero-code::before,
+.section-background__hero-code::after {
+  top: 10px;
+  width: 62px;
+  height: 86px;
+  border-width: 2px;
+}
+
+.section-background__hero-code--one {
+  top: 15%;
+  left: 6%;
+}
+
+.section-background__hero-code--two {
+  right: 7%;
+  bottom: 13%;
+  opacity: 0.3;
+  transform: rotate(10deg) scale(0.9);
+}
+
+.section-background__about-frame {
+  top: 14%;
+  right: 7%;
+  width: 300px;
+  height: 370px;
+  opacity: 0.4;
+  border-color: rgba(0, 212, 170, 0.58);
+  box-shadow:
+    inset 0 0 60px rgba(0, 212, 170, 0.07),
+    0 0 35px rgba(0, 212, 170, 0.08);
+}
+
+.section-background__about-frame::before {
+  width: 82px;
+  height: 82px;
+  border-color: rgba(0, 212, 170, 0.72);
+}
+
+.section-background__about-frame::after {
+  right: 52px;
+  bottom: 60px;
+  left: 52px;
+  height: 106px;
+  border-color: rgba(0, 212, 170, 0.62);
+}
+
+.section-background__about-signature {
+  width: 260px;
+  opacity: 0.36;
+  border-top-color: rgba(0, 212, 170, 0.68);
+}
+
+.section-background__timeline {
+  right: 7%;
+  width: 170px;
+  opacity: 0.58;
+}
+
+.section-background__timeline::before {
+  width: 2px;
+  box-shadow: 0 0 18px rgba(129, 140, 248, 0.2);
+}
+
+.section-background__timeline span {
+  width: 14px;
+  height: 14px;
+  border-width: 2px;
+}
+
+.section-background__timeline span::after {
+  opacity: 0.8;
+}
+
+.section-background__education-cap {
+  width: 230px;
+  height: 150px;
+  opacity: 0.55;
+  filter: drop-shadow(0 0 20px rgba(129, 140, 248, 0.18));
+}
+
+.section-background__education-path {
+  opacity: 0.42;
+  filter: drop-shadow(0 0 12px rgba(96, 165, 250, 0.14));
+}
+
+.section-background__project-window {
+  opacity: 0.46;
+  border-color: rgba(0, 212, 170, 0.5);
+  box-shadow:
+    inset 0 0 28px rgba(0, 212, 170, 0.045),
+    0 0 28px rgba(0, 212, 170, 0.07);
+}
+
+.section-background__project-window--one {
+  width: 250px;
+  height: 160px;
+}
+
+.section-background__project-window--two {
+  width: 210px;
+  height: 135px;
+}
+
+.section-background__project-window--three {
+  width: 180px;
+  height: 116px;
+  opacity: 0.35;
+}
+
+.section-background__contact-envelope {
+  width: 290px;
+  height: 190px;
+  opacity: 0.5;
+  border-color: rgba(0, 212, 170, 0.54);
+  filter: drop-shadow(0 0 22px rgba(0, 212, 170, 0.14));
+}
+
+.section-background__contact-route {
+  opacity: 0.48;
+}
+
+@media (max-width: 768px) {
+  .section-background__hero-code,
+  .section-background__about-frame,
+  .section-background__education-cap,
+  .section-background__project-window,
+  .section-background__contact-envelope {
+    opacity: 0.3;
+  }
+
+  .section-background__timeline {
+    opacity: 0.42;
+  }
+}
